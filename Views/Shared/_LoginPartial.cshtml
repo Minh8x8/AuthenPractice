@@ -1,0 +1,18 @@
+﻿@using Microsoft.AspNetCore.Authentication
+@using Microsoft.AspNetCore.Authorization
+@using System.Security.Claims
+
+<div class="flex justify-end items-center space-x-4 p-4">
+    @if (User.Identity != null && User.Identity.IsAuthenticated)
+    {
+        <span class="text-gray-700">👋 Hello, @User.Identity.Name!</span>
+        <form method="post" asp-controller="Auth" asp-action="Logout">
+            <button type="submit" class="bg-red-500 text-white px-3 py-1 rounded">Logout</button>
+        </form>
+    }
+    else
+    {
+        <a href="/Login" class="text-blue-600 hover:underline">Login</a>
+        <a href="/Register" class="text-blue-600 hover:underline">Register</a>
+    }
+</div>
